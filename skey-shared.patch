@@ -72,7 +72,7 @@ diff -urN skey-2.2.orig/libskey/Makefile skey-2.2/libskey/Makefile
 -lib$(LIB).a: $(OBJS)
 -	ar crs lib$(LIB).a $(OBJS)
 +lib$(LIB).so.$(VERSION): $(OBJS) $(MD_OBJS)
-+	ld -o lib$(LIB).so.$(VERSION) -soname lib$(LIB).so.$(MAJOR) -shared $(OBJS) $(MD_OBJS)
++	$(CC) -o lib$(LIB).so.$(VERSION) -Wl,-soname=lib$(LIB).so.$(MAJOR) -shared $(OBJS) $(MD_OBJS)
 +	ln -s lib$(LIB).so.$(VERSION) lib$(LIB).so
 +
 +lib$(LIB).a: $(OBJS) $(MD_OBJS)

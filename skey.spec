@@ -2,7 +2,7 @@ Summary:	S/Key suite of programs
 Summary(pl):	Zestaw programów do S/Key
 Name:		skey
 Version:	2.2
-Release:	6
+Release:	7
 License:	GPL
 Group:		Networking/Daemons
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
@@ -46,7 +46,6 @@ Summary(pl):	Statyczne biblioteki S/Key
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
-
 %description static
 Static S/Key libraries.
 
@@ -72,7 +71,7 @@ install libskey/libskey.so.*.* $RPM_BUILD_ROOT%{_libdir}
 ln -sf libskey.so.%{version} $RPM_BUILD_ROOT/%{_libdir}/libskey.so
 
 install {key,keyinfo,keyinit,libskey}/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install libskey/*.5 $RPM_BUILD_ROOT%{_mandir}/man5/
+install libskey/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
 
 %clean
 rm -rf $RPM_BUILD_ROOT
