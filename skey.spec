@@ -1,7 +1,7 @@
 Summary:	S/Key suite of programs
 Name:		skey
 Version:	2.2
-Release:	1
+Release:	2
 Copyright:	GPL
 Group:		Libraries
 Source:		%{name}-%{version}.tar.gz
@@ -20,6 +20,7 @@ algorithms. This code may be exported freely out of the United States.
 %package devel
 Summary:	libraries and headers for developing S/Key enabled programs
 Group:		Development/Libraries
+Requires:	%{name} = %{version}
 
 %description devel
 Libraries and headers for developing S/Key enabled programs.
