@@ -1,0 +1,94 @@
+diff -urN skey-2.2.orig/key/Makefile skey-2.2/key/Makefile
+--- skey-2.2.orig/key/Makefile	Mon Apr  3 06:08:28 1995
++++ skey-2.2/key/Makefile	Sun Apr 23 02:15:50 2000
+@@ -8,8 +8,8 @@
+ MAN1 = key.1
+ 
+ REQUIRED_CFLAGS = -I../libskey -I../libmd
+-REQUIRED_LDFLAGS = -L../libskey -L../libmd
+-REQUIRED_LDLIBS = -lskey -lmd
++REQUIRED_LDFLAGS = -L../libskey
++REQUIRED_LDLIBS = -lskey -lcrypt
+ 
+ OBJS = $(SRCS:.c=.o)
+ 
+diff -urN skey-2.2.orig/keyinit/Makefile skey-2.2/keyinit/Makefile
+--- skey-2.2.orig/keyinit/Makefile	Mon Apr  3 06:08:00 1995
++++ skey-2.2/keyinit/Makefile	Sun Apr 23 02:17:56 2000
+@@ -8,8 +8,8 @@
+ MAN1 = keyinit.1
+ 
+ REQUIRED_CFLAGS = -I../libskey -I../libmd
+-REQUIRED_LDFLAGS = -L../libskey -L../libmd
+-REQUIRED_LDLIBS = -lskey -lmd
++REQUIRED_LDFLAGS = -L../libskey
++REQUIRED_LDLIBS = -lskey -lcrypt
+ 
+ OBJS = $(SRCS:.c=.o)
+ 
+diff -urN skey-2.2.orig/libmd/Makefile skey-2.2/libmd/Makefile
+--- skey-2.2.orig/libmd/Makefile	Mon Apr  3 06:06:21 1995
++++ skey-2.2/libmd/Makefile	Sun Apr 23 02:18:42 2000
+@@ -12,7 +12,7 @@
+ MLINKS+=mdX.3 MD5Init.3 mdX.3 MD5Update.3 mdX.3 MD5Final.3 
+ MLINKS+=mdX.3 MD5End.3  mdX.3 MD5File.3   mdX.3 MD5Data.3
+ CLEANFILES+=	md[245]hl.c md[245].ref md[245].3 mddriver
+-REQUIRED_CFLAGS = -I${.CURDIR}
++REQUIRED_CFLAGS = -I${.CURDIR} -fPIC -DPIC
+ OBJS = $(SRCS:.c=.o)
+ .CURDIR = .
+ ECHO = echo
+diff -urN skey-2.2.orig/libskey/Makefile skey-2.2/libskey/Makefile
+--- skey-2.2.orig/libskey/Makefile	Mon Apr  3 06:06:33 1995
++++ skey-2.2/libskey/Makefile	Sun Apr 23 02:14:08 2000
+@@ -2,15 +2,21 @@
+ CFLAGS = -O2
+ prefix = /usr
+ 
++MAJOR = 2
++MINOR = 2
++VERSION = $(MAJOR).$(MINOR)
++
+ LIB = skey
+ SRCS = skeyaccess.c put.c skey_crypt.c skey_getpass.c skeylogin.c skeysubr.c
+ MAN1 = skey.1
+ MAN5 = skey.access.5
+ 
+ OBJS = $(SRCS:.c=.o)
+-REQUIRED_CFLAGS = -DPERMIT_CONSOLE -I. -I../libmd
++MD_OBJS = ../libmd/md2c.o ../libmd/md4c.o ../libmd/md5c.o \
++	../libmd/md2hl.o ../libmd/md4hl.o ../libmd/md5hl.o
++REQUIRED_CFLAGS = -DPERMIT_CONSOLE -I. -I../libmd -fPIC -DPIC
+ 
+-all: lib$(LIB).a
++all: lib$(LIB).a lib$(LIB).so.$(VERSION)
+ 
+ install: all
+ 	install -c -m 644 $(MAN1) $(prefix)/man/man1
+@@ -19,8 +25,12 @@
+ clean:
+ 	rm -f $(OBJS) lib$(LIB).a
+ 
+-lib$(LIB).a: $(OBJS)
+-	ar crs lib$(LIB).a $(OBJS)
++lib$(LIB).so.$(VERSION): $(OBJS) $(MD_OBJS)
++	ld -o lib$(LIB).so.$(VERSION) -soname lib$(LIB).so.$(MAJOR) -shared $(OBJS) $(MD_OBJS)
++	ln -s lib$(LIB).so.$(VERSION) lib$(LIB).so
++
++lib$(LIB).a: $(OBJS) $(MD_OBJS)
++	ar crs lib$(LIB).a $(OBJS) $(MD_OBJS)
+ 
+ .c.o:
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) $(REQUIRED_CFLAGS) -c $<
+diff -urN skey-2.2.orig/Makefile skey-2.2/Makefile
+--- skey-2.2.orig/Makefile~	Mon Apr  3 06:17:51 1995
++++ skey-2.2/Makefile	Sun Apr 23 02:23:46 2000
+@@ -11,7 +11,7 @@
+ LDFLAGS =
+ prefix = /usr
+ 
+-SUBDIRS = libskey libmd keyinit key keyinfo $(LOGIN)
++SUBDIRS = libmd libskey keyinit key keyinfo $(LOGIN)
+ 
+ default: all
+ 
