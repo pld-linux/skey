@@ -2,7 +2,7 @@ Summary:	S/Key suite of programs
 Summary(pl):	Zestaw programów do S/Key
 Name:		skey
 Version:	2.2
-Release:	7
+Release:	7.1
 License:	GPL
 Group:		Networking/Daemons
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
@@ -88,6 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%dir %{_includedir}/security
 %{_includedir}/security/skey.h
 %attr(755,root,root) %{_libdir}/lib*.so
 
