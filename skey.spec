@@ -30,7 +30,7 @@ Libraries and headers for developing S/Key enabled programs.
 %patch -p1
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS"
+%{__make} CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
