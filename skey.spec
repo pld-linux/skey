@@ -6,6 +6,7 @@ Release:	7.1
 License:	GPL
 Group:		Networking/Daemons
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
+# Source0-md5:	c6ac90d37ac4b847e96a0a9ea8f34a6e
 Patch0:		%{name}-shared.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
