@@ -3,10 +3,9 @@ Name:		skey
 Version:	2.2
 Release:	4
 License:	GPL
-Group:		Libraries
-Group(de):	Libraries
-Group(fr):	Librairies
-Group(pl):	Biblioteki
+Group:		Networking/Daemons
+Group(de):	Netzwerkwesen/Server
+Group(pl):	Sieciowe/Serwery
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
 Patch0:		%{name}-shared.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
