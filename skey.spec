@@ -2,7 +2,7 @@ Summary:	S/Key suite of programs
 Summary(pl):	Zestaw programów do S/Key
 Name:		skey
 Version:	2.2
-Release:	7.1
+Release:	8
 License:	GPL
 Group:		Networking/Daemons
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
@@ -34,6 +34,7 @@ Summary:	Headers for developing S/Key enabled programs
 Summary(pl):	Pliki nag³ówkowe do tworzenia programów u¿ywaj±cych S/Key
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	FHS >= 2.2-9
 
 %description devel
 Headers for developing S/Key enabled programs.
@@ -62,14 +63,14 @@ Statyczne biblioteki S/Key.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{%{_bindir},%{_mandir}/man{1,5},%{_libdir},%{_includedir}/security}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man{1,5},%{_libdir},%{_includedir}/security}
 
 install key/key keyinit/keyinit keyinfo/keyinfo $RPM_BUILD_ROOT%{_bindir}
 install libskey/skey.h $RPM_BUILD_ROOT%{_includedir}/security
 install libskey/libskey.a $RPM_BUILD_ROOT%{_libdir}
 install libskey/libskey.so.*.* $RPM_BUILD_ROOT%{_libdir}
 
-ln -sf libskey.so.%{version} $RPM_BUILD_ROOT/%{_libdir}/libskey.so
+ln -sf libskey.so.%{version} $RPM_BUILD_ROOT%{_libdir}/libskey.so
 
 install {key,keyinfo,keyinit,libskey}/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install libskey/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
@@ -89,7 +90,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%dir %{_includedir}/security
 %{_includedir}/security/skey.h
 %attr(755,root,root) %{_libdir}/lib*.so
 
