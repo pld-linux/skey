@@ -1,7 +1,8 @@
 Summary:	S/Key suite of programs
+Summary(pl):	Zestaw programÛw do S/Key
 Name:		skey
 Version:	2.2
-Release:	4
+Release:	5
 License:	GPL
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server
@@ -20,28 +21,53 @@ authentication via key checksums and does not contain any
 strong-encryption algorithms. This code may be exported freely out of
 the United States.
 
+%description -l pl
+Zestaw programÛw do S/Key.
+
+S/Key daje system autentykacji bazuj±cy na has≥ach jednorazowych przy
+uøyciu algorytmu skrÛtu MD5 RSA Data Security. Ta technologia bazuje
+na autentykacji key-challenge poprzez sumy kontrolne kluczy i nie
+zawiera silnej kryptografii - tak wiÍc kod moøe byÊ eksportowany poza
+USA.
+
 %package devel
-Summary:	libraries and headers for developing S/Key enabled programs
+Summary:	Headers for developing S/Key enabled programs
+Summary(pl):	Pliki nag≥Ûwkowe do tworzenia programÛw uøywaj±cych S/Key
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
 Requires:	%{name} = %{version}
 
 %description devel
-Libraries and headers for developing S/Key enabled programs.
+Headers for developing S/Key enabled programs.
+
+%description devel -l pl
+Pliki nag≥Ûwkowe do tworzenia programÛw uøywaj±cych S/Key.
 
 %package static
-Summary:	static S/Key libraries
+Summary:	Static S/Key libraries
+Summary(pl):	Statyczne biblioteki S/Key
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
 Requires:	%{name}-devel = %{version}
 
 
 %description static
 Static S/Key libraries.
+
+%description static -l pl
+Statyczne biblioteki S/Key.
 
 %prep
 %setup -q
@@ -59,16 +85,16 @@ install libskey/skey.h $RPM_BUILD_ROOT%{_includedir}/security
 install libskey/libskey.a $RPM_BUILD_ROOT%{_libdir}
 install libskey/libskey.so.*.* $RPM_BUILD_ROOT%{_libdir}
 
-ln -s libskey.so.%{version} $RPM_BUILD_ROOT/%{_libdir}/libskey.so
+ln -sf libskey.so.%{version} $RPM_BUILD_ROOT/%{_libdir}/libskey.so
 
-install {key,keyinfo,keyinit,libskey}/*.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+install {key,keyinfo,keyinit,libskey}/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install libskey/*.5 $RPM_BUILD_ROOT%{_mandir}/man5/
-
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
