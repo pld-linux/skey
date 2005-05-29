@@ -2,7 +2,7 @@ Summary:	S/Key suite of programs
 Summary(pl):	Zestaw programów do S/Key
 Name:		skey
 Version:	2.2
-Release:	10
+Release:	11
 License:	GPL
 Group:		Networking/Daemons
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
@@ -59,7 +59,9 @@ Statyczne biblioteki S/Key.
 %patch -p1
 
 %build
-%{__make} CFLAGS="%{rpmcflags}"
+%{__make} \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
