@@ -1,6 +1,6 @@
-diff -urN skey-2.2.orig/key/Makefile skey-2.2/key/Makefile
---- skey-2.2.orig/key/Makefile	Mon Apr  3 06:08:28 1995
-+++ skey-2.2/key/Makefile	Sun Apr 23 02:15:50 2000
+diff -urN skey-2.2.org/key/Makefile skey-2.2/key/Makefile
+--- skey-2.2.org/key/Makefile	1995-04-03 06:08:28.000000000 +0200
++++ skey-2.2/key/Makefile	2005-05-29 18:44:11.590942920 +0200
 @@ -8,8 +8,8 @@
  MAN1 = key.1
  
@@ -12,9 +12,9 @@ diff -urN skey-2.2.orig/key/Makefile skey-2.2/key/Makefile
  
  OBJS = $(SRCS:.c=.o)
  
-diff -urN skey-2.2.orig/keyinit/Makefile skey-2.2/keyinit/Makefile
---- skey-2.2.orig/keyinit/Makefile	Mon Apr  3 06:08:00 1995
-+++ skey-2.2/keyinit/Makefile	Sun Apr 23 02:17:56 2000
+diff -urN skey-2.2.org/keyinit/Makefile skey-2.2/keyinit/Makefile
+--- skey-2.2.org/keyinit/Makefile	1995-04-03 06:08:00.000000000 +0200
++++ skey-2.2/keyinit/Makefile	2005-05-29 18:44:11.590942920 +0200
 @@ -8,8 +8,8 @@
  MAN1 = keyinit.1
  
@@ -26,9 +26,9 @@ diff -urN skey-2.2.orig/keyinit/Makefile skey-2.2/keyinit/Makefile
  
  OBJS = $(SRCS:.c=.o)
  
-diff -urN skey-2.2.orig/libmd/Makefile skey-2.2/libmd/Makefile
---- skey-2.2.orig/libmd/Makefile	Mon Apr  3 06:06:21 1995
-+++ skey-2.2/libmd/Makefile	Sun Apr 23 02:18:42 2000
+diff -urN skey-2.2.org/libmd/Makefile skey-2.2/libmd/Makefile
+--- skey-2.2.org/libmd/Makefile	1995-04-03 06:06:21.000000000 +0200
++++ skey-2.2/libmd/Makefile	2005-05-29 18:44:11.591942768 +0200
 @@ -12,7 +12,7 @@
  MLINKS+=mdX.3 MD5Init.3 mdX.3 MD5Update.3 mdX.3 MD5Final.3 
  MLINKS+=mdX.3 MD5End.3  mdX.3 MD5File.3   mdX.3 MD5Data.3
@@ -38,9 +38,9 @@ diff -urN skey-2.2.orig/libmd/Makefile skey-2.2/libmd/Makefile
  OBJS = $(SRCS:.c=.o)
  .CURDIR = .
  ECHO = echo
-diff -urN skey-2.2.orig/libskey/Makefile skey-2.2/libskey/Makefile
---- skey-2.2.orig/libskey/Makefile	Mon Apr  3 06:06:33 1995
-+++ skey-2.2/libskey/Makefile	Sun Apr 23 02:14:08 2000
+diff -urN skey-2.2.org/libskey/Makefile skey-2.2/libskey/Makefile
+--- skey-2.2.org/libskey/Makefile	1995-04-03 06:06:33.000000000 +0200
++++ skey-2.2/libskey/Makefile	2005-05-29 18:44:41.699365744 +0200
 @@ -2,15 +2,21 @@
  CFLAGS = -O2
  prefix = /usr
@@ -72,7 +72,7 @@ diff -urN skey-2.2.orig/libskey/Makefile skey-2.2/libskey/Makefile
 -lib$(LIB).a: $(OBJS)
 -	ar crs lib$(LIB).a $(OBJS)
 +lib$(LIB).so.$(VERSION): $(OBJS) $(MD_OBJS)
-+	$(CC) -o lib$(LIB).so.$(VERSION) -Wl,-soname=lib$(LIB).so.$(MAJOR) -shared $(OBJS) $(MD_OBJS)
++	$(CC) -o lib$(LIB).so.$(VERSION) -Wl,-soname=lib$(LIB).so.$(MAJOR) -shared $(OBJS) $(MD_OBJS) -lcrypt
 +	ln -s lib$(LIB).so.$(VERSION) lib$(LIB).so
 +
 +lib$(LIB).a: $(OBJS) $(MD_OBJS)
@@ -80,9 +80,9 @@ diff -urN skey-2.2.orig/libskey/Makefile skey-2.2/libskey/Makefile
  
  .c.o:
  	$(CC) $(CPPFLAGS) $(CFLAGS) $(REQUIRED_CFLAGS) -c $<
-diff -urN skey-2.2.orig/Makefile skey-2.2/Makefile
---- skey-2.2.orig/Makefile~	Mon Apr  3 06:17:51 1995
-+++ skey-2.2/Makefile	Sun Apr 23 02:23:46 2000
+diff -urN skey-2.2.org/Makefile skey-2.2/Makefile
+--- skey-2.2.org/Makefile	1995-04-03 06:17:51.000000000 +0200
++++ skey-2.2/Makefile	2005-05-29 18:44:11.592942616 +0200
 @@ -11,7 +11,7 @@
  LDFLAGS =
  prefix = /usr
