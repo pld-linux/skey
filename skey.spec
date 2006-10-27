@@ -2,7 +2,7 @@ Summary:	S/Key suite of programs
 Summary(pl):	Zestaw programów do S/Key
 Name:		skey
 Version:	2.2
-Release:	11
+Release:	12
 License:	GPL
 Group:		Base/Authentication and Authorization
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
@@ -34,7 +34,7 @@ Summary:	Headers for developing S/Key enabled programs
 Summary(pl):	Pliki nag³ówkowe do tworzenia programów u¿ywaj±cych S/Key
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	FHS >= 2.2-9
+Requires:	filesystem >= 3.0-11
 
 %description devel
 Headers for developing S/Key enabled programs.
