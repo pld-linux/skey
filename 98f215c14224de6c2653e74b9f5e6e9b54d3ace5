@@ -1,0 +1,4 @@
+- release 3,
+- make spec %{debug} ready,
+- added using new rpm automation,
+- added static subpackage.
