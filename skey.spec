@@ -34,7 +34,7 @@ Summary:	Headers for developing S/Key enabled programs
 Summary(pl):	Pliki nag³ówkowe do tworzenia programów u¿ywaj±cych S/Key
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	filesystem >= 3.0-11
+Requires:	filesystem >= 2.0-1
 
 %description devel
 Headers for developing S/Key enabled programs.
