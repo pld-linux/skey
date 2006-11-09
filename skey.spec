@@ -46,7 +46,7 @@ Pliki nag³ówkowe do tworzenia programów u¿ywaj±cych S/Key.
 Summary:	Static S/Key libraries
 Summary(pl):	Statyczne biblioteki S/Key
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static S/Key libraries.
