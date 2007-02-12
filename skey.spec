@@ -1,5 +1,5 @@
 Summary:	S/Key suite of programs
-Summary(pl.UTF-8):   Zestaw programów do S/Key
+Summary(pl.UTF-8):	Zestaw programów do S/Key
 Name:		skey
 Version:	2.2
 Release:	13
@@ -31,7 +31,7 @@ USA.
 
 %package devel
 Summary:	Headers for developing S/Key enabled programs
-Summary(pl.UTF-8):   Pliki nagłówkowe do tworzenia programów używających S/Key
+Summary(pl.UTF-8):	Pliki nagłówkowe do tworzenia programów używających S/Key
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	filesystem >= 3.0-11
@@ -44,7 +44,7 @@ Pliki nagłówkowe do tworzenia programów używających S/Key.
 
 %package static
 Summary:	Static S/Key libraries
-Summary(pl.UTF-8):   Statyczne biblioteki S/Key
+Summary(pl.UTF-8):	Statyczne biblioteki S/Key
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
