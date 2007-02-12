@@ -1,5 +1,5 @@
 Summary:	S/Key suite of programs
-Summary(pl):	Zestaw programÛw do S/Key
+Summary(pl.UTF-8):   Zestaw program√≥w do S/Key
 Name:		skey
 Version:	2.2
 Release:	13
@@ -20,18 +20,18 @@ authentication via key checksums and does not contain any
 strong-encryption algorithms. This code may be exported freely out of
 the United States.
 
-%description -l pl
-Zestaw programÛw do S/Key.
+%description -l pl.UTF-8
+Zestaw program√≥w do S/Key.
 
-S/Key daje system autentykacji bazuj±cy na has≥ach jednorazowych przy
-uøyciu algorytmu skrÛtu MD5 RSA Data Security. Ta technologia bazuje
+S/Key daje system autentykacji bazujƒÖcy na has≈Çach jednorazowych przy
+u≈ºyciu algorytmu skr√≥tu MD5 RSA Data Security. Ta technologia bazuje
 na autentykacji key-challenge poprzez sumy kontrolne kluczy i nie
-zawiera silnej kryptografii - tak wiÍc kod moøe byÊ eksportowany poza
+zawiera silnej kryptografii - tak wiƒôc kod mo≈ºe byƒá eksportowany poza
 USA.
 
 %package devel
 Summary:	Headers for developing S/Key enabled programs
-Summary(pl):	Pliki nag≥Ûwkowe do tworzenia programÛw uøywaj±cych S/Key
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe do tworzenia program√≥w u≈ºywajƒÖcych S/Key
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	filesystem >= 3.0-11
@@ -39,19 +39,19 @@ Requires:	filesystem >= 3.0-11
 %description devel
 Headers for developing S/Key enabled programs.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe do tworzenia programÛw uøywaj±cych S/Key.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe do tworzenia program√≥w u≈ºywajƒÖcych S/Key.
 
 %package static
 Summary:	Static S/Key libraries
-Summary(pl):	Statyczne biblioteki S/Key
+Summary(pl.UTF-8):   Statyczne biblioteki S/Key
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static S/Key libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki S/Key.
 
 %prep
