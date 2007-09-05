@@ -2,7 +2,7 @@ Summary:	S/Key suite of programs
 Summary(pl.UTF-8):	Zestaw programów do S/Key
 Name:		skey
 Version:	2.2
-Release:	13
+Release:	14
 License:	GPL
 Group:		Base/Authentication and Authorization
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
