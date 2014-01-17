@@ -2,7 +2,7 @@ Summary:	S/Key suite of programs
 Summary(pl.UTF-8):	Zestaw programów do S/Key
 Name:		skey
 Version:	2.2
-Release:	14
+Release:	15
 License:	GPL
 Group:		Base/Authentication and Authorization
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
@@ -61,7 +61,8 @@ Statyczne biblioteki S/Key.
 %build
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags}"
+	CFLAGS="%{rpmcflags}" \
+	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -73,6 +74,7 @@ install libskey/libskey.a $RPM_BUILD_ROOT%{_libdir}
 install libskey/libskey.so.*.* $RPM_BUILD_ROOT%{_libdir}
 
 ln -sf libskey.so.%{version} $RPM_BUILD_ROOT%{_libdir}/libskey.so
+ln -sf libskey.so.%{version} $RPM_BUILD_ROOT%{_libdir}/libskey.so.2
 
 install {key,keyinfo,keyinit,libskey}/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install libskey/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
@@ -87,6 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/lib*.so.2
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
