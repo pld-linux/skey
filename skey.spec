@@ -1,9 +1,9 @@
 Summary:	S/Key suite of programs
-Summary(pl.UTF-8):	Zestaw programów do S/Key
+Summary(pl.UTF-8):	Zestaw programów do uwierzytelniania metodą S/Key
 Name:		skey
 Version:	2.2
 Release:	15
-License:	GPL
+License:	BSD
 Group:		Base/Authentication and Authorization
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
 # Source0-md5:	c6ac90d37ac4b847e96a0a9ea8f34a6e
@@ -23,11 +23,11 @@ the United States.
 %description -l pl.UTF-8
 Zestaw programów do S/Key.
 
-S/Key daje system autentykacji bazujący na hasłach jednorazowych przy
-użyciu algorytmu skrótu MD5 RSA Data Security. Ta technologia bazuje
-na autentykacji key-challenge poprzez sumy kontrolne kluczy i nie
-zawiera silnej kryptografii - tak więc kod może być eksportowany poza
-USA.
+S/Key dostarcza system uwierzytelniania oparty na hasłach
+jednorazowych z użyciem algorytmu skrótu MD5 RSA Data Security. Ta
+technika opiera się na uwierzytelnianiu key-challenge poprzez sumy
+kontrolne kluczy i nie zawiera silnej kryptografii - tak więc kod może
+być eksportowany poza USA.
 
 %package devel
 Summary:	Headers for developing S/Key enabled programs
@@ -87,17 +87,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/lib*.so.2
-%{_mandir}/man1/*
-%{_mandir}/man5/*
+%doc README
+%attr(755,root,root) %{_bindir}/key
+%attr(755,root,root) %{_bindir}/keyinfo
+%attr(755,root,root) %{_bindir}/keyinit
+%attr(755,root,root) %{_libdir}/libskey.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libskey.so.2
+%{_mandir}/man1/key.1*
+%{_mandir}/man1/keyinfo.1*
+%{_mandir}/man1/keyinit.1*
+%{_mandir}/man1/skey.1*
+%{_mandir}/man5/skey.access.5*
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libskey.so
 %{_includedir}/security/skey.h
-%attr(755,root,root) %{_libdir}/lib*.so
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libskey.a
