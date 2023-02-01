@@ -2,7 +2,7 @@ Summary:	S/Key suite of programs
 Summary(pl.UTF-8):	Zestaw programów do uwierzytelniania metodą S/Key
 Name:		skey
 Version:	2.2
-Release:	15
+Release:	16
 License:	BSD
 Group:		Base/Authentication and Authorization
 Source0:	ftp://sunsite.unc.edu/pub/Linux/system/security/%{name}-%{version}.tar.gz
